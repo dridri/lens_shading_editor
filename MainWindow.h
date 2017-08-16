@@ -1,7 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <qwidget.h>
+#include <stdint.h>
+#include <QWidget>
 #include <QImage>
 
 namespace Ui

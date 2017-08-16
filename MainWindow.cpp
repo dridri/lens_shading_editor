@@ -195,7 +195,7 @@ void MainWindow::Export()
 
 	for ( int32_t y = 0; y < image.height(); y++ ) {
 		for ( int32_t x = 0; x < image.width(); x++ ) {
-			uint32_t color = image.pixelColor( x, y ).rgba();
+			uint32_t color = image.pixel( x, y );
 			uint32_t r = ( color & 0x00FF0000 ) >> 16;
 			uint32_t g = ( color & 0x0000FF00 ) >> 8;
 			uint32_t b = color & 0x000000FF;
