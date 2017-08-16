@@ -16,3 +16,6 @@ cmake ..
 make
 [make install] or just run it
 ```
+
+
+![screenshot](https://raw.githubusercontent.com/dridri/lens_shading_editor/master/screenshot.png)
