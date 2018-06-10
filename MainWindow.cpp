@@ -200,7 +200,7 @@ QImage MainWindow::GenerateImage( bool force_enable_all_channels, int32_t width,
 
 	auto apply = [=]( uint16_t* channel, int x, int y, float dist, int dotradius, int dotstrength, float tilt_h, float tilt_v )
 	{
-		int32_t ret = ui->r_base->value() + (int32_t)( channel[y*width+x] );
+		int32_t ret = (int32_t)( channel[y*width+x] );
 
 		if ( dotradius > 0 ) {
 			float radius = (float)dotradius * (float)std::max( width, height ) / 100.0f;
@@ -236,6 +236,9 @@ QImage MainWindow::GenerateImage( bool force_enable_all_channels, int32_t width,
 			gb = std::min( std::max( gb, 32 ), 255 );
 			b = std::min( std::max( b, 32 ), 255 );
 
+			if ( y == 0 and x == 0 ) {
+				printf( "rggb: %03d %03d %03d %03d\n", r, gr, gb, b );
+			}
 			mChannels[0][y * width + x] = r;
 			mChannels[1][y * width + x] = gr;
 			mChannels[2][y * width + x] = gb;
