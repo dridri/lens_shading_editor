@@ -206,7 +206,7 @@ QImage MainWindow::GenerateImage( bool force_enable_all_channels, int32_t width,
 			float radius = (float)dotradius * (float)std::max( width, height ) / 100.0f;
 			float dist_norm = std::min( 1.0f, dist / radius );
 			float dot = ( std::cos(dist_norm * M_PI ) + 1.0f ) / 2.0f;
-			ret = std::max( 0, std::min( 255, ret + (int32_t)( dot * dotstrength ) ) );
+			ret += (int32_t)( dot * dotstrength );
 		}
 
 		if ( tilt_h != 0.0f ) {
@@ -236,9 +236,6 @@ QImage MainWindow::GenerateImage( bool force_enable_all_channels, int32_t width,
 			gb = std::min( std::max( gb, 32 ), 255 );
 			b = std::min( std::max( b, 32 ), 255 );
 
-			if ( y == 0 and x == 0 ) {
-				printf( "rggb: %03d %03d %03d %03d\n", r, gr, gb, b );
-			}
 			mChannels[0][y * width + x] = r;
 			mChannels[1][y * width + x] = gr;
 			mChannels[2][y * width + x] = gb;
