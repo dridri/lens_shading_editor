@@ -7,7 +7,14 @@ See https://github.com/6by9/lens_shading on how to apply the generated table.
 
 ## Dependencies
 
-On debian-based distributions (and probably others) just install packages 'cmake', 'g++' and 'qtbase5-dev'
+* Qt5
+* OpenGL
+
+For debian-based distributions (and probably other Linux distros) just install packages `cmake g++ qtbase5-dev libqt5opengl5-dev`
+
+On Windows, installing Qt-Creator is the easiest way.
+
+On OSX.. hmm Qt-Creator should be enough.
 
 
 ## Building
@@ -16,11 +23,15 @@ The program is entirely Qt5 based, and should be able to be built on any platfor
 
 To build it, just do the following :
 ```
-mkdir build && cd build
-cmake ..
+qmake
 make
-[make install] or just run it
+then run it using ./lensshading
 ```
+
+
+## Prebuilt binaries
+
+Comming soon...
 
 
 ![screenshot](https://raw.githubusercontent.com/dridri/lens_shading_editor/master/screenshot.png)

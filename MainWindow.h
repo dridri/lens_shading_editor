@@ -4,10 +4,12 @@
 #include <stdint.h>
 #include <QWidget>
 #include <QImage>
+#include "GLWidget.h"
 
 namespace Ui
 {
-class MainWindow;
+	class MainWindow;
+	class OpenDialog;
 }
 
 class MainWindow : public QWidget
@@ -17,10 +19,14 @@ public:
 	MainWindow();
 	~MainWindow();
 
-	QImage GenerateImage( bool force_enable_all_channels = false );
+	QImage GenerateImage( bool force_enable_all_channels = false, int32_t width = 52, int32_t height = 39 );
 
 public slots:
 	void RepaintShader();
+	void Load();
+	void LoadChannels();
+	void Save();
+	void Import();
 	void Export();
 
 	void r_base_changed( int value );
@@ -34,7 +40,17 @@ public slots:
 
 private:
 	Ui::MainWindow* ui;
+	QDialog* mOpenDialog;
+	Ui::OpenDialog* uiOpenDialog;
+	QString mDialogPath;
 	QImage mImage;
+	uint16_t mChannels[4][52 * 39];
+	uint16_t mBaseChannels[4][52 * 39];
+
+	GLWidget* mGLWidget;
+
+	void ExportC( char* ret, int32_t width, int32_t height );
+	void ExportLUA( char* ret, int32_t width, int32_t height );
 };
 
 #endif // MAINWINDOW_H
