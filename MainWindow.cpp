@@ -99,7 +99,7 @@ MainWindow::MainWindow()
 	ui->groupBox_2->setVisible( false );
 	ui->groupBox_1->setTitle( "G" );
 	adjustSize();
-	setGeometry( x(), y(), width() + height() * 45 / 39, height() );
+	setGeometry( x(), y(), 1.35 * height() * 52 / 39, height() * 1.1 );
 
 	RepaintShader();
 }
@@ -345,6 +345,11 @@ void MainWindow::LoadChannels()
 	uint16_t buf[3280 * 2464 / 2 / sizeof(uint16_t)];
 	uint64_t final[52 * 39];
 	uint32_t accum[52 * 39];
+
+	if ( filenames[1].endsWith( ".jpg", Qt::CaseInsensitive ) or filenames[1].endsWith( ".jpeg", Qt::CaseInsensitive ) ) {
+		messageBox.critical( 0, "Error", "JPEG RAW not supported yet" );
+		return;
+	}
 
 	for ( uint32_t ch = 1; ch <= 4; ch++ ) {
 		QFile inputFile( filenames[ch] );

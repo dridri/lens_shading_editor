@@ -36,6 +36,8 @@ then run it using ./lensshading
 Comming soon...
 
 
-## screenshot
+## Screenshots
 
 ![screenshot](https://raw.githubusercontent.com/dridri/lens_shading_editor/master/screenshot.png)
+
+![screenshot_load](https://raw.githubusercontent.com/dridri/lens_shading_editor/master/screenshot_load.png) ![screenshot_export](https://raw.githubusercontent.com/dridri/lens_shading_editor/master/screenshot_export.png)
